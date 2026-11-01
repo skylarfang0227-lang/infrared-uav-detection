@@ -1,0 +1,500 @@
+{
+  "spec_id": "msda_irstd_independent_r1_20261010",
+  "provenance": {
+    "paper": "research/fulltext/msda_irstd.pdf",
+    "pages": [
+      3,
+      4,
+      5
+    ],
+    "equations": "1-12",
+    "diagram": "Figure 1; bridge crossings are not junctions",
+    "local_base": "configs/models/yolo11n-p2.yaml",
+    "framework": "ultralytics==8.3.161",
+    "author_code_verified": false,
+    "exact_author_configuration_claim": false
+  },
+  "input": {
+    "channels": 3,
+    "size": 640
+  },
+  "nc": 2,
+  "channels_already_scaled": true,
+  "nodes": [
+    {
+      "id": "stem1",
+      "op": "Conv",
+      "inputs": [
+        "image"
+      ],
+      "channels": 16,
+      "stride": 2,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "stem2",
+      "op": "Conv",
+      "inputs": [
+        "stem1"
+      ],
+      "channels": 32,
+      "stride": 4,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "B2",
+      "op": "C3k2",
+      "inputs": [
+        "stem2"
+      ],
+      "channels": 64,
+      "stride": 4,
+      "n": 1,
+      "c3k": false,
+      "e": 0.25
+    },
+    {
+      "id": "down3",
+      "op": "Conv",
+      "inputs": [
+        "B2"
+      ],
+      "channels": 64,
+      "stride": 8,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "B3",
+      "op": "C3k2",
+      "inputs": [
+        "down3"
+      ],
+      "channels": 128,
+      "stride": 8,
+      "n": 1,
+      "c3k": false,
+      "e": 0.25
+    },
+    {
+      "id": "down4",
+      "op": "Conv",
+      "inputs": [
+        "B3"
+      ],
+      "channels": 128,
+      "stride": 16,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "B4",
+      "op": "ASFE",
+      "inputs": [
+        "down4"
+      ],
+      "channels": 128,
+      "stride": 16,
+      "n": 1
+    },
+    {
+      "id": "down5",
+      "op": "Conv",
+      "inputs": [
+        "B4"
+      ],
+      "channels": 256,
+      "stride": 32,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "B5",
+      "op": "ASFE",
+      "inputs": [
+        "down5"
+      ],
+      "channels": 256,
+      "stride": 32,
+      "n": 1
+    },
+    {
+      "id": "S5",
+      "op": "SPPF",
+      "inputs": [
+        "B5"
+      ],
+      "channels": 256,
+      "stride": 32,
+      "k": 5
+    },
+    {
+      "id": "T5",
+      "op": "C2DYT",
+      "inputs": [
+        "S5"
+      ],
+      "channels": 256,
+      "stride": 32,
+      "n": 1,
+      "e": 0.5
+    },
+    {
+      "id": "proj3",
+      "op": "Conv",
+      "inputs": [
+        "B3"
+      ],
+      "channels": 128,
+      "stride": 8,
+      "k": 1,
+      "s": 1
+    },
+    {
+      "id": "proj5",
+      "op": "Conv",
+      "inputs": [
+        "T5"
+      ],
+      "channels": 128,
+      "stride": 32,
+      "k": 1,
+      "s": 1
+    },
+    {
+      "id": "M4",
+      "op": "MFA",
+      "inputs": [
+        "proj3",
+        "B4",
+        "proj5"
+      ],
+      "channels": 384,
+      "stride": 16
+    },
+    {
+      "id": "T4",
+      "op": "C3k2",
+      "inputs": [
+        "M4"
+      ],
+      "channels": 128,
+      "stride": 16,
+      "n": 1,
+      "c3k": false,
+      "e": 0.5
+    },
+    {
+      "id": "proj2",
+      "op": "Conv",
+      "inputs": [
+        "B2"
+      ],
+      "channels": 128,
+      "stride": 4,
+      "k": 1,
+      "s": 1
+    },
+    {
+      "id": "proj4",
+      "op": "Conv",
+      "inputs": [
+        "T4"
+      ],
+      "channels": 128,
+      "stride": 16,
+      "k": 1,
+      "s": 1
+    },
+    {
+      "id": "M3",
+      "op": "MFA",
+      "inputs": [
+        "proj2",
+        "B3",
+        "proj4"
+      ],
+      "channels": 384,
+      "stride": 8
+    },
+    {
+      "id": "N3",
+      "op": "C3k2",
+      "inputs": [
+        "M3"
+      ],
+      "channels": 64,
+      "stride": 8,
+      "n": 1,
+      "c3k": false,
+      "e": 0.5
+    },
+    {
+      "id": "pan4",
+      "op": "Conv",
+      "inputs": [
+        "N3"
+      ],
+      "channels": 64,
+      "stride": 16,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "cat4",
+      "op": "Concat",
+      "inputs": [
+        "pan4",
+        "proj4"
+      ],
+      "channels": 192,
+      "stride": 16
+    },
+    {
+      "id": "N4",
+      "op": "C3k2",
+      "inputs": [
+        "cat4"
+      ],
+      "channels": 128,
+      "stride": 16,
+      "n": 1,
+      "c3k": false,
+      "e": 0.5
+    },
+    {
+      "id": "pan5",
+      "op": "Conv",
+      "inputs": [
+        "N4"
+      ],
+      "channels": 128,
+      "stride": 32,
+      "k": 3,
+      "s": 2
+    },
+    {
+      "id": "cat5",
+      "op": "Concat",
+      "inputs": [
+        "pan5",
+        "T5"
+      ],
+      "channels": 384,
+      "stride": 32
+    },
+    {
+      "id": "N5",
+      "op": "C3k2",
+      "inputs": [
+        "cat5"
+      ],
+      "channels": 256,
+      "stride": 32,
+      "n": 1,
+      "c3k": true,
+      "e": 0.5
+    },
+    {
+      "id": "D3",
+      "op": "DSA",
+      "inputs": [
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "channels": 64,
+      "stride": 8
+    },
+    {
+      "id": "A3",
+      "op": "Add",
+      "inputs": [
+        "N3",
+        "D3"
+      ],
+      "channels": 64,
+      "stride": 8
+    },
+    {
+      "id": "up2",
+      "op": "Upsample",
+      "inputs": [
+        "A3"
+      ],
+      "channels": 64,
+      "stride": 4,
+      "mode": "nearest",
+      "factor": 2
+    },
+    {
+      "id": "cat2",
+      "op": "Concat",
+      "inputs": [
+        "up2",
+        "B2"
+      ],
+      "channels": 128,
+      "stride": 4
+    },
+    {
+      "id": "N2",
+      "op": "C3k2",
+      "inputs": [
+        "cat2"
+      ],
+      "channels": 32,
+      "stride": 4,
+      "n": 1,
+      "c3k": false,
+      "e": 0.5
+    },
+    {
+      "id": "D2",
+      "op": "DSA",
+      "inputs": [
+        "B2",
+        "A3",
+        "N4"
+      ],
+      "channels": 32,
+      "stride": 4
+    },
+    {
+      "id": "A2",
+      "op": "Add",
+      "inputs": [
+        "N2",
+        "D2"
+      ],
+      "channels": 32,
+      "stride": 4
+    }
+  ],
+  "detect": {
+    "op": "Detect",
+    "inputs": [
+      "A2",
+      "A3",
+      "N4",
+      "N5"
+    ],
+    "strides": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "channels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "implementation": "Ultralytics8.3.161 Detect; reg_max=16; nc=2; YOLO11 nonlegacy head"
+  },
+  "modules": {
+    "Conv": {
+      "implementation": "Ultralytics Conv",
+      "groups": 1,
+      "padding": "same",
+      "bias": false,
+      "norm": "BatchNorm2d",
+      "activation": "SiLU"
+    },
+    "ASFE": {
+      "Y0_channels": "c_out",
+      "branch_channels": "h=c_out//2",
+      "Y0": "Conv(c_in,c_out,1)",
+      "Y1": "Conv(Conv(Y0,c_out,3,groups=c_out),h,1)",
+      "Y2": "Conv(Y0,h,1)",
+      "Y3_Y4": "Y0.chunk(2,dim=1)",
+      "blocks": "sequential ASFEBlock on Y4; include every output",
+      "concat": "[Y1,Y2,Y3,Y4]+block_outputs; (4+n)*h channels",
+      "output": "Conv((4+n)*h,c_out,1)",
+      "block": {
+        "dw_kernels": [
+          7,
+          7
+        ],
+        "spatial_padding": [
+          3,
+          3
+        ],
+        "f1_f2_expansion": 3,
+        "f1_f2_g_kernel": 1,
+        "all_convolutions_bias": true,
+        "normalization": null,
+        "activation": "ReLU6 on f1 only",
+        "formula": "Z + DropPath(DW7(g(ReLU6(f1(Zs))*f2(Zs)))); Zs=DW7(Z)",
+        "drop_path_probability": 0.1,
+        "drop_path_mode": "per_sample_bernoulli_broadcast; scale_by_keep; identity_in_eval"
+      }
+    },
+    "C2DYT": {
+      "base": "Ultralytics8.3.161 C2PSA/PSABlock",
+      "placement": "independent DyT before attention and FFN in each PSABlock; preserve residuals",
+      "formula": "tanh(alpha*x)*omega+b",
+      "alpha_initial": 0.5,
+      "omega_initial": 1.0,
+      "b_initial": 0.0,
+      "alpha_scalar": true,
+      "omega_b_per_channel": true,
+      "trainable": true
+    },
+    "MFA": {
+      "high": "adaptive_max_pool2d+adaptive_avg_pool2d to middle spatial size",
+      "middle": "identity",
+      "low": "nearest interpolation to middle spatial size",
+      "concat_order": [
+        "high",
+        "middle",
+        "low"
+      ],
+      "internal_projection": false
+    },
+    "DSA": {
+      "projections": "three independent Conv(c_in,c_out,1) as defined above",
+      "resize": "nearest to highest resolution input",
+      "stack_axis": 2,
+      "conv3d_kernel": [
+        1,
+        1,
+        1
+      ],
+      "conv3d_stride": 1,
+      "conv3d_padding": 0,
+      "conv3d_bias": false,
+      "normalization": "BatchNorm3d",
+      "bn3d_eps": 0.001,
+      "bn3d_momentum": 0.03,
+      "bn3d_affine": true,
+      "leaky_relu_slope": 0.1,
+      "maxpool_kernel": [
+        3,
+        1,
+        1
+      ],
+      "maxpool_stride": [
+        3,
+        1,
+        1
+      ],
+      "squeeze_axis": 2
+    }
+  },
+  "local_assumptions": [
+    "MFA external Conv kernels=1 and output widths=middle width; resolve inconsistent Figure3 channel labels using equations7-9",
+    "ASFE branch widths and expansion=3, EDS kernel=3, branch BN/SiLU, bare block convolutions, DropPath=.1",
+    "DSA projection BN/SiLU, Conv3d bias=False, BN3d epsilon/momentum and LeakyReLU slope=.1",
+    "base framework/version and scaled neck channels follow local YOLO11n-P2; not claimed author settings"
+  ],
+  "rules": {
+    "no_AP_based_spec_selection": true,
+    "all_core_modules_required": true,
+    "stage2_forward_backward_smoke_resume_required": true,
+    "paper_parameter_count_is_diagnostic_not_a_tuning_target": true
+  }
+}
