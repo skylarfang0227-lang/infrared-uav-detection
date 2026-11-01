@@ -1,0 +1,11 @@
+{
+  "purpose": "Distinguish training-seed variation from dependence on the available background proxy groups",
+  "bootstrap_replicates": 1000,
+  "seed": 20261030,
+  "unit": "15 heldout background proxy groups; sample15 groups with replacement; preserve every image within each sampled group",
+  "comparison": "Mean across all three paired seeds of combined-minus-reference UAV AP50:95; both models use identical sampled groups",
+  "interval": "Descriptive percentile 2.5/97.5 interval, conditional on the fitted weights and proxy grouping. Not certified scene-generalization confidence; groups may remain related.",
+  "leave_one_group_out": "Report range of mean paired gain after omitting each of15 groups; no refitting",
+  "worst_group": "Report per-group results for groups with>=10 UAV boxes, chosen by labels only. No deployment claim from few groups.",
+  "validation": "Cached COCO per-image matching and repeated-image accumulation must match the unchanged evaluator on the original data and fixed resampled miniature cases before reported use."
+}

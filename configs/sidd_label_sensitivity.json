@@ -1,0 +1,8 @@
+{
+  "registered_before_any_SIDD_score": true,
+  "reason": "The data-only audit found644 pixel-identical groups with different boxes; their median minimum pairwise boxIoU is0.8842 and only8 groups fall below0.5. These are annotation disagreements, not proven incorrect labels. Strict exclusion changes the population substantially.",
+  "primary": "Keep the previously fixed3373 screened, annotation-consistent unique images unchanged.",
+  "secondary": "Evaluate all4017 unique images twice, once with the first and once with the last supplied annotation under deterministic archive/COCO ordering. Reuse identical predictions; do not choose the better label version. Ambiguous additional images have not received the full geometric cross-source screen, so this secondary population is not certified independent.",
+  "selection": "Archive annotation paths sorted lexicographically, COCO image order retained, unique groups in first-occurrence order; same canonical imageID for both label choices.",
+  "interpretation": "Difference measures sensitivity to supplied annotation versions and inclusion of ambiguous images. It is not a ground-truth correction, confidence interval, or replacement for the primary cohort."
+}

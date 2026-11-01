@@ -1,0 +1,20 @@
+{
+  "study": "Frozen historical SIRST models on SIDD, no adaptation",
+  "source": "Existing SIDD-main.zip; author repository https://github.com/Dang-zy/SIDD; DOI 10.3390/drones7060393",
+  "archive_sha256": "2895d35f034dd2e2e8b8d56ff35b47e8ee3f743e1bc975ff574619a7562ae757",
+  "models": "All six historical stage5 final EMA weights; no selection by SIDD scores",
+  "population": "All 4737 COCO images from supplied train and validation folders, since none is used for fitting, adaptation, statistics or threshold calibration. Collapse decoded-pixel duplicates, exclude entire groups with conflicting boxes. Preserve native author boxes; do not use segmentation areas as bbox areas.",
+  "primary_population": "Unique, annotation-consistent images with no detected exact, perceptual or geometric overlap with historical SIRST exposure. Unfiltered unique population also reported as sensitivity, if different.",
+  "cross_exact": "All 3000 SIRST images, decoded grayscale SHA256",
+  "cross_perceptual": "All pairs against 2502 pixel-distinct SIRST images; 63bit DCT pHash Hamming<=8 AND 80x64 thumbnail MAE<=4",
+  "cross_geometric": "Up to four equally spaced-by-ID representatives per each of 64 SIRST background proxy groups, plus excluded conflict images. ORB600, ratio<0.70, >=18 inliers, >=0.6 inlier ratio, normalized inlier bbox span>=0.10 both images, RANSAC2.5px, scale0.6-1.7, rotation<=35deg. This sample does not prove absence of scene overlap.",
+  "metric": "Same frozen bbox COCO evaluator, UAV AP50:95 primary, AP50 and sizes secondary. UAV category0 maps to evaluator1. Original two-class inference retained, Bird predictions do not count as UAV. No threshold or BN adaptation.",
+  "subgroups": [
+    "city",
+    "moutain",
+    "sea",
+    "sky"
+  ],
+  "uncertainty": "Paired 17/29/43 training-seed variation only. Acquisition sequences unavailable; no image-iid confidence claims.",
+  "limits": "No claim of certified independent collection; no target fine-tuning or model choice; class/background/size shift is a stress test, not a directly comparable published SIDD leaderboard. No access to Anti-UAV410."
+}

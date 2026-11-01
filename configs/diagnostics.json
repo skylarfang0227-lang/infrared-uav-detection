@@ -1,0 +1,53 @@
+{
+  "id": "prediction_diagnostics_v1",
+  "scope": "No training, tuning, checkpoint selection, split alteration or overwrite of historical evidence.",
+  "prediction_analysis": {
+    "variants": [
+      "reference",
+      "head"
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "checkpoints": "Frozen grouped epoch50 EMA",
+    "population": "All 389 fixed final images; report all UAV and native area<=16 separately",
+    "thresholds": [
+      0.5,
+      0.75
+    ],
+    "matching": "Original COCO evaluator, maxDets300, unchanged predictions and score ordering. Verify exact original metrics first. Paired GT outcomes from area-all matching, then stratify matched GT by native area; separately retain original area-specific recall validation.",
+    "outputs": [
+      "both/A-only/H-only/neither matched target counts",
+      "TP and unmatched retained detections by fixed confidence bins [0.001,0.01,0.1,0.25,0.5,1.000001]",
+      "all-size unmatched detection categories: duplicate (same-class IoU>=threshold), localization (same-class IoU>=0.1), class-confusion (other-class IoU>=threshold), background; ordered diagnostic categories, not causal attribution"
+    ],
+    "limits": "Saved predictions are post-NMS. No claim to isolate NMS removal, geometric precision or causal mechanism. No significance-based outcome selection."
+  },
+  "group_audit": {
+    "inputs": "Existing pixel-unique catalog, strict/broad perceptual edge lists, retained ORB/RANSAC edges and frozen split",
+    "checks": "Reconstruct original component mappings and confirm zero recorded-edge split crossings. Reconstruct strict and broad group counts. Compute stricter retained-geometric-edge sensitivity using inliers>=24, ratio>=0.7, minimum span>=0.15, scale[0.75,1.33], angle<=20; do not rerun matching or change splits.",
+    "visual_sample": "Twelve existing geometric edges: four smallest inlier counts, four smallest minimum spans excluding already selected, four evenly spaced from remaining edge indices. Show representative grayscale images and affine alignment; record observations as qualitative checks, not estimated precision or scene identity.",
+    "group_cap": "Report counts and images in groups above existing cap187; relate to target heldout size, but do not invent undocumented original optimization rationale."
+  },
+  "cost": {
+    "variants": [
+      "reference",
+      "head"
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "checkpoints": "Same six frozen grouped epoch50 EMA weights as prediction comparison; SHA256 checked before and after",
+    "inputs": "32 lowest-numeric-ID grouped training images; fixed independently of predictions",
+    "settings": "RTX4060Ti, batch1, FP32, unfused, inference_mode, 4 Torch CPU threads, deterministic algorithms, cudnn benchmark off; original image_tensor, decoder and NMS conf0.001/IoU0.7/maxDets300/nc2",
+    "order": "Seed17 A/H; seed29 H/A; seed43 A/H. 20 complete-pipeline warmups per checkpoint then 3 blocks of64 iterations. No concurrent training or CPU analysis during timing.",
+    "timing": "CUDA-synchronized wall time separately for raw forward, decode, NMS including clone, and end-to-end including image loading/preprocessing/transfer/forward/decode/NMS/rescale/CPU copy. Preserve all samples; mean of three checkpoint medians plus per-seed paired changes.",
+    "memory": "After timing delete all32 resident inputs and staged outputs; keep one input, warm10 iterations, clear unused cache, measure3 single-input forward+decode+NMS peaks; includes model/input/grid caches, excludes host/driver memory. Report median of3 per checkpoint then mean acrossseeds.",
+    "hardware": "Record driver, GPU state and process snapshot; desktop WDDM background activity is not fully controlled. No clock changes or termination of user processes.",
+    "failure": "Stop on hash mismatch, unexpected training, OOM or incomplete measurement; preserve partial logs and report. No repeated runs to obtain preferred latency."
+  }
+}

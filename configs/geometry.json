@@ -1,0 +1,12 @@
+{
+  "purpose": "Training-label-only geometric plausibility; not a measured explanation of AP",
+  "population": "Frozen grouped training images, UAV boxes only",
+  "lattices": [
+    4,
+    2
+  ],
+  "anchors": "(j+0.5)*stride on640 letterboxed input, strict interior test as in inherited assigner",
+  "range": "All four target distances must lie strictly inside15*stride, the upper end of16-bin DFL support. This tests representability, not actual assignment.",
+  "report": "Count targets with zero interior sites, mean interior sites, count with no site also within finest-level DFL range; stratify native area<=16,16-49,>49. Other heads remain available.",
+  "limits": "Actual TAL assignments also depend on class confidence, overlap and top-k competition. More geometrically eligible sites do not establish better optimization or recovery of lost image information."
+}

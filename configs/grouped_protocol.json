@@ -1,0 +1,54 @@
+{
+  "id": "background_grouped_factorial_v1",
+  "hypothesis": "Head and stem effects and interaction may differ when exact and detected background similarity no longer cross evaluation boundaries.",
+  "epochs": 50,
+  "batch": 8,
+  "workers": 0,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "variants": [
+    "reference",
+    "head",
+    "stem",
+    "combined"
+  ],
+  "mechanism_control": {
+    "variant": "phase_collapsed",
+    "seed": 17,
+    "comparison": "head",
+    "scope": "exploratory development only; output density, stride, DFL range, initialization and raw parameter count matched, effective capacity differs"
+  },
+  "save_epochs": [
+    10,
+    25,
+    40,
+    50
+  ],
+  "training_overrides": {},
+  "checkpoint": "epoch50 EMA, no checkpoint or model selection",
+  "primary": "UAV AP50:95; original evaluator unchanged",
+  "secondary": [
+    "UAV AP50",
+    "UAV area<=16 native pixels AP50:95",
+    "two-class AP50:95",
+    "paired component and interaction effects"
+  ],
+  "split": {
+    "seed": 20261029,
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "trials": 20000,
+    "minimum_heldout_groups": 10,
+    "large_group_train_threshold": 187,
+    "selection": "Data-only randomized assignments. Large groups go to train. Other groups have probabilities [0.5,0.25,0.25]. Minimize squared deviations from target fractions in image, UAV-box, Bird-box and tiny-UAV counts, equally weighted. First minimum wins; no AP used."
+  },
+  "evaluation_freeze": "All four factorial configurations and all 12 terminal checkpoint hashes frozen before any new test inference. Development inference may diagnose execution but cannot choose a checkpoint or variant. No final-test-guided tuning.",
+  "interpretation": "Background matching proxies cannot establish true scene or sequence independence. All SIRST images were historically available; this is a new matched robustness experiment, not a pristine external test.",
+  "uncertainty": "Report all three paired seeds, mean, sample SD and descriptive paired t interval; seed interval measures training randomness only. Also report background-group clustered sensitivity when sufficient groups exist."
+}

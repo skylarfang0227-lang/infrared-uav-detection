@@ -1,0 +1,22 @@
+{
+  "registered_before_new_model_scores": true,
+  "purpose": "Investigate exact and perceptual overlap without model predictions; grouping is a leakage control, not proof of acquisition-scene independence.",
+  "exact": "SHA256 of encoded bytes and decoded grayscale; compare all labels within pixel-equivalence groups",
+  "main_near_rule": {
+    "phash_bits": 63,
+    "phash_hamming_max": 4,
+    "thumbnail_size": [
+      80,
+      64
+    ],
+    "thumbnail_mae_max": 2.0
+  },
+  "broad_sensitivity_rule": {
+    "phash_hamming_max": 8,
+    "thumbnail_mae_max": 4.0
+  },
+  "pair_search": "all unordered pairs of pixel-distinct representatives, no top-k truncation",
+  "group_rule": "connected components of exact equivalence and qualifying perceptual edges",
+  "annotation_conflicts": "exclude whole conflicting pixel group from any proposed new protocol; retain and report originals",
+  "selection_policy": "Dataset diagnostics may guide feasibility of a new split before training; no AP used to select grouping or split. No guarantee of scene independence without metadata."
+}

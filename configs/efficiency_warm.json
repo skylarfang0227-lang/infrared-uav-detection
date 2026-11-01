@@ -1,0 +1,29 @@
+{
+  "registered_before_measurement": true,
+  "checkpoints": "six historical formal epoch50 EMA checkpoints, no training",
+  "input": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "precision": "FP32",
+  "fused": false,
+  "device": "local CUDA device0; GPU synchronization at timing boundaries",
+  "cpu_threads": 4,
+  "images": "first32 original-training image IDs in numeric order, fixed without predictions",
+  "warmup_iterations": 20,
+  "blocks": 3,
+  "iterations_per_block": 64,
+  "order": "alternate reference/candidate order by seed; report per-run and raw durations",
+  "stages": [
+    "raw model forward incl final projections, excluding decoding",
+    "decode cached raw outputs",
+    "class-aware NMS at0.001/0.7,max300",
+    "warm-file-read+letterbox+H2D+forward+decode+NMS+native-coordinate conversion+DtoH"
+  ],
+  "macs": "Conv2d, Conv3d and Linear MACs only; does not include attention matrix products, pooling, normalization or other operators; never label as total FLOPs",
+  "interpretation": "batch1 isolated benchmark, not operational real-time guarantee",
+  "warmup_scope": "Full preprocessing/forward/decode/NMS/coordinate conversion/DtoH before all measured blocks",
+  "replication_reason": "Original warmup omitted NMS and first NMS included startup overhead; all original raw measurements retained."
+}

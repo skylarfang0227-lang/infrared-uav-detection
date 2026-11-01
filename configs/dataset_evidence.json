@@ -1,0 +1,74 @@
+{
+  "created_on": "2026-10-10",
+  "stage1_passed": true,
+  "selected_reference": "MSDA-IRSTD",
+  "blocking_evidence": null,
+  "source_sha256": {
+    "AGENTS.md": "73e092b01701a0bf00670f6429e2c7fc8f2d4a9c7e3c8f77537528a82cefeaa3",
+    "docs/stage1_sirst_comparison_protocol.md": "339bf4361089335e10a40ba471b5c822c523861760b6973cac58cd32edbf5add",
+    "configs/protocols/sirst_msda_v1.json": "747fe326d8d2c67d06785405f807a18527cdda1cadc82b207dbc9a55c9b1c6ee",
+    "docs/msda_author_clarification_draft.txt": "2d92902404489927b7c2ed07572b336bd7a3292ef18dafe7152d4ffa0ddd6cf2",
+    "research/fulltext/msda_irstd.pdf": "4bb89631d59200b059f1798df9ef87c06427ca0fc73404e344af3c069d857bba",
+    "research/literature_matrix.csv": "3450964073f605fa36aebbbd7bc8b43742833c380bd259be3dc78bcf65dfcfb5",
+    "research/review_index.json": "94787fc0bce30dad07c2e87e3d3e2a5de0cfd9a09413418ac6fb821394417fc6",
+    "research/literature_audit.json": "b81f75d1d3874949c04733be56d7dd5d76660778933fe911a6d74ca09e458e84",
+    "research/search_log.md": "e48e633cf2de93bae8045bb0e68cc644b5c9ca0311bdb2b81b89ccfd9897ea0a",
+    "data/splits/sirst_uavb/manifest.json": "7a6d6fc0cc1fde3caefa90c09108f4a2abf1ae84ebee4095aecfbf3e5ac7790a",
+    "requirements.lock.txt": "be6dbf503b5f66166bf01e94cf47febeed755627e7e2197905f4b3626ff4c10b",
+    "docs/sirst_data_audit.md": "05626e4e9e0496f2255368d34725b5bff10a6d9ab9f77c96fa3f813e7e9981a8",
+    "docs/sirst_similarity_audit.json": "a3e5440be3b0992f22b301d6c20a150112117d39d36b4d2582c4341afec228ac",
+    "docs/project_state.md": "da5eb5f3d520e067a876db8792a8183fae7072f002f61ae7fb8842ba25bc3af2",
+    "docs/msda_reconstruction_spec.md": "ad1070c78c9988f6abf59258e49fca9728906ddfcf014915d78b6c5a482bb5ca",
+    "configs/models/msda_irstd_spec.json": "a23c0efdb4fef9b53f1b5070390ace91e1b0301d11ec7419f4159e218d7ca656",
+    "scripts/validate_msda_spec.py": "df7a9d569544604e8f81335a4be9891ff8cbd06d27021306a0b35177e1b4599c",
+    "docs/stage1_sirst_report.md": "95bb391e367a2f7866feadff8ef4043b6a930bc38406a3b3b0d93bfa664cf46c",
+    "docs/stage1_sirst_validation.json": "db0cc039e8fab77512b13f7cc3fff6cb99c1a82fd5c3e13ed01b57431112313b"
+  },
+  "splits": {
+    "official_train": {
+      "path": "data/splits/sirst_uavb/official_train.txt",
+      "count": 2400,
+      "sha256": "fa8cac1d99edbd2e9eaa35e68c90c309f531b91f5d731a7a70c4068ac1d75c86"
+    },
+    "official_eval": {
+      "path": "data/splits/sirst_uavb/official_eval.txt",
+      "count": 600,
+      "sha256": "31e4010b8c4a1980d198f42cd20f2da8801d6f6bb0144dca1d484f0f49c0f66f"
+    },
+    "dev_train": {
+      "path": "data/splits/sirst_uavb/dev_train.txt",
+      "count": 1909,
+      "sha256": "02f4ee6fe9ea3815556c2a37cea88d662559b57c61102c94e3c18fe12286ac30"
+    },
+    "dev_val": {
+      "path": "data/splits/sirst_uavb/dev_val.txt",
+      "count": 491,
+      "sha256": "00feaf558288a792c4da4fae874f5d82aa8b1b931cbf48696684d69687c1db55"
+    },
+    "smoke_train": {
+      "path": "data/splits/sirst_uavb/smoke_train.txt",
+      "count": 256,
+      "sha256": "807bf4a2e92e67670de267467128a55613ebf623be206827cb26663ec06f3d84"
+    },
+    "smoke_val": {
+      "path": "data/splits/sirst_uavb/smoke_val.txt",
+      "count": 64,
+      "sha256": "3d4c62511fc7d7b9b91caf421bd0cc94cc56a34e6e972d4473f3e8bb10fc4381"
+    }
+  },
+  "verification_scope": "Fingerprints of existing evidence/manifests; no fresh raw image scan, no model inference. Existing manifest contains per-image and per-label fingerprints.",
+  "communication_policy": {
+    "email_sending": "prohibited_by_user",
+    "email_authorization_question": "withdrawn",
+    "ABCDEF_format": "stage_end_reports_only",
+    "changed_on": "2026-10-10",
+    "reports": "brief; details in machine configurations; history archived"
+  },
+  "acceptance_scope": "literature selection, fixed comparison protocol, explicit implementable independent reconstruction; no model correctness or author identity certification",
+  "remaining_limitations": [
+    "unreported author parameters; see reconstruction specification",
+    "paper UAV AP50:95 unavailable",
+    "incompatible external protocols and pending literature evidence; no universal-best or external-SOTA claim"
+  ],
+  "later_milestone_note": "Stage2 accepted; prior stage1 manifest and edited documents preserved in docs/history/stage2_before_acceptance_20261010; no stage1 architecture/training target changed."
+}

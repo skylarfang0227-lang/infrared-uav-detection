@@ -1,0 +1,22 @@
+{
+  "reason": "Visual audit showed distinct perceptual groups with similar building backgrounds; expand leakage investigation before choosing a new split.",
+  "model_scores_observed": false,
+  "representatives": "one lowest-ID member of each broad perceptual component",
+  "orb_features": 600,
+  "image_size": [
+    640,
+    512
+  ],
+  "descriptor_ratio_max": 0.7,
+  "min_ratio_matches": 18,
+  "ransac_reprojection_pixels": 2.5,
+  "min_inliers": 18,
+  "min_inlier_ratio": 0.6,
+  "min_inlier_bbox_area_fraction_both_images": 0.1,
+  "scale_range": [
+    0.6,
+    1.7
+  ],
+  "max_absolute_rotation_degrees": 35,
+  "interpretation": "Geometrically linked background proxy; repetitive building textures and textureless images remain uncertain. Not verified acquisition scene metadata."
+}

@@ -1,0 +1,17 @@
+{
+  "registered_before_new_model_scores": true,
+  "reason": "Data-only audit found that two of fifteen final background proxy groups contain86.3753% of images. Component effects should receive the same group sensitivity analysis as the original combined-versus-reference comparison.",
+  "original_analysis": "configs/group_uncertainty.json remains unchanged; the same groups, RNG seed and1000draws are used.",
+  "additional_contrasts": [
+    "head_without_stem",
+    "stem_without_head",
+    "head_with_stem",
+    "stem_with_head",
+    "average_head_effect",
+    "average_stem_effect",
+    "interaction"
+  ],
+  "rule": "Compute every registered contrast on every paired group draw and all three seeds. Report percentile intervals of across-seed mean effects, regardless of sign. No model, checkpoint, group or contrast selection.",
+  "scope": "Descriptive sensitivity to observed background proxy groups; not independent-scene population inference or multiplicity-corrected significance.",
+  "cost": "CPU-only cached matching; approximately twice the original bootstrap AP calculations, no new model inference or training."
+}

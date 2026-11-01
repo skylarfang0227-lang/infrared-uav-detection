@@ -1,0 +1,25 @@
+{
+  "id": "background_grouped_budget100_v1",
+  "hypothesis": "The reference-versus-combined contrast may depend on the original50-epoch budget; test a doubled matched schedule without changing architecture.",
+  "epochs": 100,
+  "batch": 8,
+  "workers": 0,
+  "seeds": [
+    17
+  ],
+  "variants": [
+    "reference",
+    "combined"
+  ],
+  "save_epochs": [
+    50,
+    75,
+    100
+  ],
+  "training_overrides": {},
+  "checkpoint": "epoch100 EMA, no checkpoint selection",
+  "population": "Identical1723 grouped training images;387 development images only for this schedule comparison",
+  "schedule": "Fresh scratch100-epoch linear LR schedule, same warmup and final10epochs mosaic closure. Do not continue a50-epoch-decay checkpoint and call it100-epoch scratch training.",
+  "comparison": "Development AP of the two100-epoch finalEMA models versus the same two seed17 models trained with the separate50-epoch schedule. The epoch50 point within100schedule is a trajectory diagnostic, not the50schedule comparator.",
+  "scope": "Exploratory paired single-seed budget sensitivity; no three-seed or universal convergence claim. All results reported regardless of sign. The primary12-run50-epoch final-test comparison remains fixed."
+}
