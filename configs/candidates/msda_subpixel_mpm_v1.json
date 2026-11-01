@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "node": "Detect.P2_logits",
+  "scale": 2,
+  "initialization": "Repeat common scratch projection weights across phases; classification bias minuslog4 following stride2 object-density prior",
+  "stem_phase": {
+    "enabled": true,
+    "node": "stem1"
+  }
+}
