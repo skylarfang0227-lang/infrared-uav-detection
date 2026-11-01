@@ -1,0 +1,142 @@
+[
+  {
+    "file": "results/predictions/test_combined_s17_e50.json.gz",
+    "destination": "results/test/combined_s17_e50/predictions.json.gz",
+    "sha256": "737a54a6160f4094afda61ca149f65f428f0aa179e2f77edb9d7ea2c62f4193f"
+  },
+  {
+    "file": "results/predictions/test_combined_s29_e50.json.gz",
+    "destination": "results/test/combined_s29_e50/predictions.json.gz",
+    "sha256": "59e75e65f304b79221a0b62340bc2e42c7bd69d1842096c8252d5b91134aea25"
+  },
+  {
+    "file": "results/predictions/test_combined_s43_e50.json.gz",
+    "destination": "results/test/combined_s43_e50/predictions.json.gz",
+    "sha256": "ed116320cb0964144703de38f9c8fb4a499657aa9136096c9b105051806acc65"
+  },
+  {
+    "file": "results/predictions/test_head_s17_e50.json.gz",
+    "destination": "results/test/head_s17_e50/predictions.json.gz",
+    "sha256": "26c48bde80be61eee65dc00a23eaf4c984d2cb5370d655c8625ebcfbcfeb0044"
+  },
+  {
+    "file": "results/predictions/test_head_s29_e50.json.gz",
+    "destination": "results/test/head_s29_e50/predictions.json.gz",
+    "sha256": "a771995efed97a289455885d477f776138709ed98cbe2f1173d0eed0d27c7b57"
+  },
+  {
+    "file": "results/predictions/test_head_s43_e50.json.gz",
+    "destination": "results/test/head_s43_e50/predictions.json.gz",
+    "sha256": "baae53b32efd899ded928b6efb191066b34d3e345f5fadcf7d12f99dadf7f1fc"
+  },
+  {
+    "file": "results/predictions/test_reference_s17_e50.json.gz",
+    "destination": "results/test/reference_s17_e50/predictions.json.gz",
+    "sha256": "18a3911ffbf19d1b7ad1631ac4601ae1490acb23b738030cbfd655c35a2ca132"
+  },
+  {
+    "file": "results/predictions/test_reference_s29_e50.json.gz",
+    "destination": "results/test/reference_s29_e50/predictions.json.gz",
+    "sha256": "ef178f0bdb2dee7cd35d140d2facfb36a1dd0e11918d6ff3bb811c383a0ee42f"
+  },
+  {
+    "file": "results/predictions/test_reference_s43_e50.json.gz",
+    "destination": "results/test/reference_s43_e50/predictions.json.gz",
+    "sha256": "a83189948f3db168f1e2921922a7ca762089087ad36cf75b82a46837c76b4560"
+  },
+  {
+    "file": "results/predictions/test_stem_s17_e50.json.gz",
+    "destination": "results/test/stem_s17_e50/predictions.json.gz",
+    "sha256": "37ba3782ab9fc7149287e4daefd8822f045dc1c098ec439ad874a590381fda2f"
+  },
+  {
+    "file": "results/predictions/test_stem_s29_e50.json.gz",
+    "destination": "results/test/stem_s29_e50/predictions.json.gz",
+    "sha256": "39d20e364bdd2dbc84abd027eca0e6faf69e2482d94e6c89f7c4e913b5644027"
+  },
+  {
+    "file": "results/predictions/test_stem_s43_e50.json.gz",
+    "destination": "results/test/stem_s43_e50/predictions.json.gz",
+    "sha256": "d376059094c3d2c7268e84e9c1d473258476b42767873ce182281010951e26bc"
+  },
+  {
+    "file": "results/predictions/dev_combined_s17_e50.json.gz",
+    "destination": "results/dev/combined_s17_e50/predictions.json.gz",
+    "sha256": "4952d38514e11e650f980acf5b9d82e87d399b98c556d2a736820341017a9df3"
+  },
+  {
+    "file": "results/predictions/dev_head_s17_e50.json.gz",
+    "destination": "results/dev/head_s17_e50/predictions.json.gz",
+    "sha256": "f656108535521708a0b183b79a35930863d44372f66e578aaebcb0ab9a022a6f"
+  },
+  {
+    "file": "results/predictions/dev_phase_collapsed_s17_e50.json.gz",
+    "destination": "results/dev/phase_collapsed_s17_e50/predictions.json.gz",
+    "sha256": "72ef8576184a6eeaa89c3461ecb6ab16ecec50232760df4f540dec7efb6e3b02"
+  },
+  {
+    "file": "results/predictions/dev_reference_s17_e50.json.gz",
+    "destination": "results/dev/reference_s17_e50/predictions.json.gz",
+    "sha256": "e6fe11a4d355fb132b87d456dac0e20ff166772c76c1f804da892c58b73c4180"
+  },
+  {
+    "file": "results/predictions/long_dev_combined_s17_e100.json.gz",
+    "destination": "results/long_dev/combined_s17_e100/predictions.json.gz",
+    "sha256": "b33b6c5c5537a437b8d211a266180cf0886357fe911d024215ba2be4e0ff4164"
+  },
+  {
+    "file": "results/predictions/long_dev_reference_s17_e100.json.gz",
+    "destination": "results/long_dev/reference_s17_e100/predictions.json.gz",
+    "sha256": "23e4406cd58f33ab9a62702967c1765986716290721701acae2c12d3734699b1"
+  },
+  {
+    "file": "results/predictions/sidd_candidate_s17_e50.json.gz",
+    "destination": "results/sidd/candidate_s17_e50/predictions.json.gz",
+    "sha256": "8b7336d474a71a4b2f36cd0c7c85ca41b8382903f7757c336e9c643a1fdb5c17"
+  },
+  {
+    "file": "results/predictions/sidd_candidate_s29_e50.json.gz",
+    "destination": "results/sidd/candidate_s29_e50/predictions.json.gz",
+    "sha256": "6640c7adcb6024b60a87f6193a3cdc1fbb2ab8fd07bd617922b1ba823ea5ffae"
+  },
+  {
+    "file": "results/predictions/sidd_candidate_s43_e50.json.gz",
+    "destination": "results/sidd/candidate_s43_e50/predictions.json.gz",
+    "sha256": "b36a78335b3871d6501574d499f90c441c9fbc659a5abbc0b712a1b8d5c650bc"
+  },
+  {
+    "file": "results/predictions/sidd_reference_s17_e50.json.gz",
+    "destination": "results/sidd/reference_s17_e50/predictions.json.gz",
+    "sha256": "6923a3736d5e1c55a0494fa38df36756dbd1e860cb310af015040e87d4c005fd"
+  },
+  {
+    "file": "results/predictions/sidd_reference_s29_e50.json.gz",
+    "destination": "results/sidd/reference_s29_e50/predictions.json.gz",
+    "sha256": "c5a40f8ef94e482fcb95d064d7d39b12b87a14bde4e00b2d4712fa2d57531b61"
+  },
+  {
+    "file": "results/predictions/sidd_reference_s43_e50.json.gz",
+    "destination": "results/sidd/reference_s43_e50/predictions.json.gz",
+    "sha256": "601094b34b47cc8a536742f147b02479dbb60d25d2633c74980739c880be4425"
+  },
+  {
+    "file": "results/predictions/detectors_yolo11n.json.gz",
+    "destination": "benchmarks/detectors/results/yolo11n/predictions.json.gz",
+    "sha256": "661911889b8cef8ed6a93443b69ca3e9b9037f340938ab558e0805b21d5f1f3a"
+  },
+  {
+    "file": "results/predictions/detectors_yolo11n_p2.json.gz",
+    "destination": "benchmarks/detectors/results/yolo11n_p2/predictions.json.gz",
+    "sha256": "08e3a6cd76b7ca60a675b5d45376e32e2485254f564da978519e7a936407ac58"
+  },
+  {
+    "file": "results/predictions/detectors_yolov5nu.json.gz",
+    "destination": "benchmarks/detectors/results/yolov5nu/predictions.json.gz",
+    "sha256": "6cbb613dda7facd1dbbeaa096cb1934869655e0317920f2a2b5e0f254dff2a97"
+  },
+  {
+    "file": "results/predictions/detectors_yolov8n.json.gz",
+    "destination": "benchmarks/detectors/results/yolov8n/predictions.json.gz",
+    "sha256": "fd7f5c2f4910a270f5a17027bef4e6992d7c01a790ca375525fed1027c9ffe13"
+  }
+]
